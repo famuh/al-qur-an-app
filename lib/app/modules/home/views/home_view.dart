@@ -1,3 +1,4 @@
+import 'package:alquran_app/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -34,7 +35,9 @@ class HomeView extends GetView<HomeController> {
                   title: Text(surah.name.transliteration.id),
                   subtitle: Text("${surah.numberOfVerses} Ayat | ${surah.revelation.id.toString().split(".").last.capitalizeFirst}"),
                   trailing: Text(surah.name.short),
-                  onTap: (){},
+                  onTap: (){
+                    Get.toNamed(Routes.DETAIL_SURAH, arguments: surah);
+                  },
                 );
               },
             );
