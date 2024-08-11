@@ -17,7 +17,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Surah ${surah.name.transliteration.id}'),
+          title: Text('Surah ${surah.name?.transliteration?.id}'),
           centerTitle: true,
         ),
         body: ListView(
@@ -29,19 +29,19 @@ class DetailSurahView extends GetView<DetailSurahController> {
                 child: Column(
                   children: [
                     Text(
-                      "${surah.name.transliteration.id}",
+                      "${surah.name?.transliteration?.id}",
                       style:
-                          TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+                          const TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
                     ),
                     Text(
-                      "${surah.name.translation.id}",
-                      style: TextStyle(
+                      "${surah.name?.translation?.id}",
+                      style: const TextStyle(
                           // fontWeight: FontWeight.w500,
                           fontSize: 16),
                     ),
                     Text(
-                      "${surah.numberOfVerses} Ayat | ${surah.revelation.id.toString().split(".").last.capitalizeFirst}",
-                      style: TextStyle(
+                      "${surah.numberOfVerses} Ayat | ${surah.revelation?.id.toString().split(".").last.capitalizeFirst}",
+                      style: const TextStyle(
                           // fontWeight: FontWeight.w500,
                           fontSize: 16),
                     ),
@@ -53,7 +53,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
               height: 20,
             ),
             FutureBuilder<detail.DetailSurah>(
-              future: controller.getDetailSurah(surah.number),
+              future: controller.getDetailSurah(surah.number!),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(

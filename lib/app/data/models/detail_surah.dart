@@ -48,7 +48,7 @@ class DetailSurah {
         "name": name.toJson(),
         "revelation": revelation.toJson(),
         "tafsir": tafsir.toJson(),
-        "preBismillah": preBismillah,
+        "preBismillah": preBismillah?.toJson(),
         "verses": List<dynamic>.from(verses.map((x) => x.toJson())),
       };
 }
@@ -61,9 +61,11 @@ class PreBismillah {
   PreBismillah({this.text, this.translation, this.audio});
 
   factory PreBismillah.fromJson(Map<String, dynamic> json) => PreBismillah(
-      text: Text.fromJson(json["text"]),
-      translation: Translation.fromJson(json["translation"]),
-      audio: Audio.fromJson(json["audio"]));
+      text: json["text"] == null ? null : Text.fromJson(json["text"]),
+      translation: json["translation"] == null
+          ? null
+          : Translation.fromJson(json["translation"]),
+      audio: json["audio"] == null ? null : Audio.fromJson(json["audio"]));
 
   Map<String, dynamic> toJson() => {
         "text": text?.toJson(),

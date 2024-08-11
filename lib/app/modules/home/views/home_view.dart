@@ -32,9 +32,9 @@ class HomeView extends GetView<HomeController> {
                   leading: CircleAvatar(
                     child: Text("${index + 1}"),
                   ),
-                  title: Text(surah.name.transliteration.id),
-                  subtitle: Text("${surah.numberOfVerses} Ayat | ${surah.revelation.id.toString().split(".").last.capitalizeFirst}"),
-                  trailing: Text(surah.name.short),
+                  title: Text(surah.name!.transliteration!.id),
+                  subtitle: Text("${surah.numberOfVerses} Ayat | ${surah.revelation?.id.toString().split(".").last.capitalizeFirst}"),
+                  trailing: Text(surah.name!.short!),
                   onTap: (){
                     Get.toNamed(Routes.DETAIL_SURAH, arguments: surah);
                   },

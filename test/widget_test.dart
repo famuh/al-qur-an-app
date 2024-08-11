@@ -1,18 +1,19 @@
 import 'dart:convert';
 
+import 'package:alquran_app/app/data/models/ayat.dart';
 import 'package:alquran_app/app/data/models/detail_surah.dart';
 import 'package:alquran_app/app/data/models/surah.dart';
 import 'package:http/http.dart' as http;
 
 void main() async {
-    Future<DetailSurah> getDetailSurah(String id) async {
-    Uri url = Uri.parse('https://api.quran.gading.dev/surah/$id');
+    Future<Ayat> getDetailSurah(String id) async {
+    Uri url = Uri.parse('https://api.quran.gading.dev/surah/$id/1');
     var res = await http.get(url);
 
     Map<String, dynamic> data =
-        (jsonDecode(res.body) as Map<String, dynamic>)["data"];
+        jsonDecode(res.body)["data"];
     print(data);
-    return DetailSurah.fromJson(data);
+    return Ayat.fromJson(data);
   }
 
   await getDetailSurah(1.toString());
