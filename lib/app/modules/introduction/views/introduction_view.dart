@@ -17,12 +17,14 @@ class IntroductionView extends GetView<IntroductionController> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
+             Text(
               "Al-Qur'an App",
               style:  TextStyle(
                 fontSize: 25,
-                fontWeight: FontWeight.bold
+                fontWeight: FontWeight.bold,
+                color: Get.isDarkMode ? appOrange : appPurpleDark
               ),
+              
             ),
             const SizedBox(height: 10,),
              const Text(

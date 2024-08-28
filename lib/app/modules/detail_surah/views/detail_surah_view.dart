@@ -1,3 +1,4 @@
+
 import 'package:alquran_app/app/data/models/detail_surah.dart' as detail;
 import 'package:alquran_app/app/data/models/surah.dart';
 import 'package:flutter/cupertino.dart';
@@ -23,29 +24,41 @@ class DetailSurahView extends GetView<DetailSurahController> {
         body: ListView(
           padding: const EdgeInsets.all(20),
           children: [
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Text(
-                      "${surah.name?.transliteration?.id}",
-                      style:
-                          const TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
-                    ),
-                    Text(
-                      "${surah.name?.translation?.id}",
-                      style: const TextStyle(
-                          // fontWeight: FontWeight.w500,
-                          fontSize: 16),
-                    ),
-                    Text(
-                      "${surah.numberOfVerses} Ayat | ${surah.revelation?.id.toString().split(".").last.capitalizeFirst}",
-                      style: const TextStyle(
-                          // fontWeight: FontWeight.w500,
-                          fontSize: 16),
-                    ),
-                  ],
+            GestureDetector(
+              onTap: ()=> Get.defaultDialog(
+                title: "Tafsir ${surah.name?.transliteration?.id }",
+                titleStyle: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+
+                content: Text(surah.tafsir?.id ?? "Tidak Ada Tafsir")
+                 
+               
+              ),
+              child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Text(
+                        "${surah.name?.transliteration?.id}",
+                        style:
+                            const TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+                      ),
+                      Text(
+                        "${surah.name?.translation?.id}",
+                        style: const TextStyle(
+                            // fontWeight: FontWeight.w500,
+                            fontSize: 16),
+                      ),
+                      Text(
+                        "${surah.numberOfVerses} Ayat | ${surah.revelation?.id.toString().split(".").last.capitalizeFirst}",
+                        style: const TextStyle(
+                            // fontWeight: FontWeight.w500,
+                            fontSize: 16),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

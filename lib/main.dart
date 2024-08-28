@@ -5,9 +5,10 @@ import 'package:get/get.dart';
 
 void main() {
   runApp(GetMaterialApp(
-    theme: appLight,
+    debugShowCheckedModeBanner: false,
+    theme: themeLight,
     title: "application",
-    initialRoute: AppPages.INITIAL,
+    initialRoute: Routes.HOME,
     getPages: AppPages.routes,
   ));
 }
