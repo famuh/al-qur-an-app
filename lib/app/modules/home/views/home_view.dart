@@ -31,7 +31,6 @@ class HomeView extends GetView<HomeController> {
             IconButton(
                 onPressed: () {
                       Get.changeThemeMode(Get.isDarkMode ? ThemeMode.light : ThemeMode.dark);
-
                 },
                 icon: const Icon(Icons.settings))
           ],

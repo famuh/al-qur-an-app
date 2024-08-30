@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 Color appPurple = const Color(0xFF431AA1);
-Color appPurpleDark = const Color(0xFF260F68);
+Color appPurpleDark = const Color(0xFF010313);
 Color appWhite = const Color(0xFFFAF8FC);
 Color appPurpleLight1 = const Color(0xFF9345F2);
 Color appPurpleLight2 = const Color(0xFFD2BEE8);
