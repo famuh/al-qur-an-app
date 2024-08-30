@@ -8,6 +8,7 @@ void main() {
     debugShowCheckedModeBanner: false,
     theme: themeLight,
     darkTheme: themeDark,
+    themeMode: ThemeMode.system,
     title: "application",
     initialRoute: Routes.HOME,
     getPages: AppPages.routes,

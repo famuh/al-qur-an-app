@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/state_manager.dart';
 
 import '../../../data/models/surah.dart';
 import '../controllers/home_controller.dart';
@@ -25,7 +27,13 @@ class HomeView extends GetView<HomeController> {
           actions: [
             IconButton(
                 onPressed: () => Get.toNamed(Routes.SEARCH),
-                icon: const Icon(Icons.search))
+                icon: const Icon(Icons.search)),
+            IconButton(
+                onPressed: () {
+                      Get.changeThemeMode(Get.isDarkMode ? ThemeMode.light : ThemeMode.dark);
+
+                },
+                icon: const Icon(Icons.settings))
           ],
         ),
         body: DefaultTabController(
@@ -151,15 +159,19 @@ class HomeView extends GetView<HomeController> {
                             Surah surah = snapshot.data![index];
                             return ListTile(
                               leading: Container(
-                                width: 35,
-                                height: 35,
-                                decoration: const BoxDecoration(
-                                  image:  DecorationImage(image: AssetImage('assets/images/avatar-border-list.png'),)
-                                ),
-                                child: Center(child: Text(surah.number.toString(), style: const TextStyle(
-                                  fontWeight: FontWeight.bold
-                                ),))
-                              ),
+                                  width: 35,
+                                  height: 35,
+                                  decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                    image: AssetImage(
+                                        'assets/images/avatar-border-list.png'),
+                                  )),
+                                  child: Center(
+                                      child: Text(
+                                    surah.number.toString(),
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold),
+                                  ))),
                               title: Text(surah.name!.transliteration!.id),
                               subtitle: Text(
                                   "${surah.numberOfVerses} Ayat | ${surah.revelation?.id.toString().split(".").last.capitalizeFirst}"),
@@ -173,31 +185,35 @@ class HomeView extends GetView<HomeController> {
                         );
                       },
                     ),
-                  
-                  
-                  ListView.builder(
-                    itemCount: 30,
-                    itemBuilder: (context, index) {
-                    return ListTile(
-                              leading: Container(
-                                width: 35,
-                                height: 35,
-                                decoration: const BoxDecoration(
-                                  image:  DecorationImage(image: AssetImage('assets/images/avatar-border-list.png'),)
-                                ),
-                                child: Center(child: Text("${index+1}", style: const TextStyle(
-                                  fontWeight: FontWeight.bold
-                                ),))
-                              ),
-                              title:  Text("Juz ${index+1}"),
-                              // subtitle: const Text(
-                              //     "abc Ayat | surah.revelation?.id.toString().split(.).last.capitalizeFirst"),
-                              // trailing: const Text("abc"),
-                              onTap: () {
-                                // belum diimplementasikan
-                              },
-                            );
-                  },),
+
+                    ListView.builder(
+                      itemCount: 30,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          leading: Container(
+                              width: 35,
+                              height: 35,
+                              decoration: const BoxDecoration(
+                                  image: DecorationImage(
+                                image: AssetImage(
+                                    'assets/images/avatar-border-list.png'),
+                              )),
+                              child: Center(
+                                  child: Text(
+                                "${index + 1}",
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold),
+                              ))),
+                          title: Text("Juz ${index + 1}"),
+                          // subtitle: const Text(
+                          //     "abc Ayat | surah.revelation?.id.toString().split(.).last.capitalizeFirst"),
+                          // trailing: const Text("abc"),
+                          onTap: () {
+                            // belum diimplementasikan
+                          },
+                        );
+                      },
+                    ),
                     const Center(child: const Text("3")),
                   ]),
                 )
