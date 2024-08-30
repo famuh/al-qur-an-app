@@ -116,6 +116,7 @@ class HomeView extends GetView<HomeController> {
                 TabBar(
                     dividerColor: Colors.transparent,
                     unselectedLabelColor: appPurpleLight2,
+                    labelColor: Get.isDarkMode ? appOrange : appPurpleDark,
                     tabs: [
                       const Tab(
                         child: Text("Surah"),
@@ -188,10 +189,10 @@ class HomeView extends GetView<HomeController> {
                                   fontWeight: FontWeight.bold
                                 ),))
                               ),
-                              title: const Text("abc"),
-                              subtitle: const Text(
-                                  "abc Ayat | surah.revelation?.id.toString().split(.).last.capitalizeFirst"),
-                              trailing: const Text("abc"),
+                              title:  Text("Juz ${index+1}"),
+                              // subtitle: const Text(
+                              //     "abc Ayat | surah.revelation?.id.toString().split(.).last.capitalizeFirst"),
+                              // trailing: const Text("abc"),
                               onTap: () {
                                 // belum diimplementasikan
                               },

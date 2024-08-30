@@ -7,6 +7,7 @@ void main() {
   runApp(GetMaterialApp(
     debugShowCheckedModeBanner: false,
     theme: themeLight,
+    darkTheme: themeDark,
     title: "application",
     initialRoute: Routes.HOME,
     getPages: AppPages.routes,
