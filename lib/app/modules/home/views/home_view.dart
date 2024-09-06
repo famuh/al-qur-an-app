@@ -1,20 +1,19 @@
-import 'dart:ffi';
-
 import 'package:alquran_app/app/routes/app_pages.dart';
 import 'package:alquran_app/common/colors.dart';
 import 'package:alquran_app/common/space.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:get/state_manager.dart';
 
+import '../../../data/models/juz.dart' as juz;
 import '../../../data/models/surah.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
+
   const HomeView({Key? key}) : super(key: key);
+
+
   @override
   Widget build(BuildContext context) {
     // if (Get.isDarkMode) {
@@ -30,7 +29,8 @@ class HomeView extends GetView<HomeController> {
                 icon: const Icon(Icons.search)),
             IconButton(
                 onPressed: () {
-                      Get.changeThemeMode(Get.isDarkMode ? ThemeMode.light : ThemeMode.dark);
+                  Get.changeThemeMode(
+                      Get.isDarkMode ? ThemeMode.light : ThemeMode.dark);
                 },
                 icon: const Icon(Icons.settings))
           ],
@@ -123,15 +123,15 @@ class HomeView extends GetView<HomeController> {
                 TabBar(
                     dividerColor: Colors.transparent,
                     unselectedLabelColor: appPurpleLight2,
-                    labelColor: Get.isDarkMode ? appOrange : appPurpleDark,
-                    tabs: [
-                      const Tab(
+                    labelColor: appOrange,
+                    tabs: const [
+                      Tab(
                         child: Text("Surah"),
                       ),
-                      const Tab(
+                      Tab(
                         child: Text("Juz"),
                       ),
-                      const Tab(
+                      Tab(
                         child: Text("Bookmark"),
                       ),
                     ]),
@@ -185,9 +185,11 @@ class HomeView extends GetView<HomeController> {
                       },
                     ),
 
+                    // list juz
                     ListView.builder(
                       itemCount: 30,
                       itemBuilder: (context, index) {
+                        // juz.Juz detailJuz = snapshot.data![index];
                         return ListTile(
                           leading: Container(
                               width: 35,
@@ -207,13 +209,35 @@ class HomeView extends GetView<HomeController> {
                           // subtitle: const Text(
                           //     "abc Ayat | surah.revelation?.id.toString().split(.).last.capitalizeFirst"),
                           // trailing: const Text("abc"),
+                          // subtitle: Text(
+                          //   "Mulai dari ${detailJuz.juzStartInfo} Sampai ${detailJuz.juzEndInfo}"
+                          // ),
                           onTap: () {
                             // belum diimplementasikan
+                            Get.toNamed(Routes.DETAIL_JUZ, arguments: index+1);
+                            print("Ini juz ${index + 1}");
                           },
                         );
                       },
                     ),
-                    const Center(child: const Text("3")),
+                    // FutureBuilder<juz.Juz>(
+                    //   future: controller.getJuz(1),
+                    //   builder: (context, snapshot) {
+                    //     if (snapshot.connectionState ==
+                    //         ConnectionState.waiting) {
+                    //       return const Center(
+                    //         child: CircularProgressIndicator(),
+                    //       );
+                    //     }
+                    //     if (!snapshot.hasData) {
+                    //       return const Center(
+                    //         child: Text("Tidak ada data"),
+                    //       );
+                    //     }
+                    //     return
+                    //   },
+                    // ),
+                    const Center(child: Text("3")),
                   ]),
                 )
               ],

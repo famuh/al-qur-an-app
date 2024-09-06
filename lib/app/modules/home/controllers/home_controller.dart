@@ -22,21 +22,7 @@ class HomeController extends GetxController {
     }
   }
 
- Future<Juz> getJuz(int juz) async {
-    Uri url = Uri.parse('https://api.quran.gading.dev/juz/$juz');
-    var res = await http.get(url);
 
-    if (res.statusCode == 200) { // Pastikan respons berhasil
-      Map<String, dynamic> data =
-          (jsonDecode(res.body) as Map<String, dynamic>)["data"];
-      Juz juzData = Juz.fromJson(data);
-
-      return juzData;
-    } else {
-      // Bisa lempar exception atau mengembalikan data default
-      throw Exception('Failed to load Juz');
-    }
-  }
 
 // default
   final count = 0.obs;
