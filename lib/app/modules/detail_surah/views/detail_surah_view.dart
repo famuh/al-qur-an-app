@@ -177,9 +177,16 @@ class DetailSurahView extends GetView<DetailSurahController> {
                             ),
                             spaceH10,
                             Text(
+                              ayat.text.transliteration.en,
+                              style: const TextStyle(fontSize: 12, fontStyle: FontStyle.italic),
+                            ),
+                            spaceH10,
+                            Text(
                               ayat.translation.id,
+                              textAlign: TextAlign.left,
                               style: const TextStyle(fontSize: 12),
                             ),
+                            spaceH10
                           ],
                         ),
                       ),
