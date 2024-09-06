@@ -12,6 +12,8 @@ import '../modules/last_read/bindings/last_read_binding.dart';
 import '../modules/last_read/views/last_read_view.dart';
 import '../modules/search/bindings/search_binding.dart';
 import '../modules/search/views/search_view.dart';
+import '../modules/settings/bindings/settings_binding.dart';
+import '../modules/settings/views/settings_view.dart';
 
 part 'app_routes.dart';
 
@@ -46,11 +48,15 @@ class AppPages {
       page: () => const LastReadView(),
       binding: LastReadBinding(),
     ),
-   
     GetPage(
       name: _Paths.DETAIL_JUZ,
-      page: () =>  DetailJuzView(),
+      page: () => DetailJuzView(),
       binding: DetailJuzBinding(),
+    ),
+    GetPage(
+      name: _Paths.SETTINGS,
+      page: () => const SettingsView(),
+      binding: SettingsBinding(),
     ),
   ];
 }

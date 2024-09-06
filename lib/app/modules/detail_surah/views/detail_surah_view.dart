@@ -8,6 +8,7 @@ import 'package:flutter/widgets.dart';
 
 import 'package:get/get.dart';
 
+import '../../../widget/InformationDetailCard.dart';
 import '../controllers/detail_surah_controller.dart';
 
 class DetailSurahView extends GetView<DetailSurahController> {
@@ -42,66 +43,12 @@ class DetailSurahView extends GetView<DetailSurahController> {
                       // const EdgeInsets.symmetric(horizontal: 30, vertical: 10)),
                       const EdgeInsets.only(
                           left: 15, right: 15, top: 10, bottom: 0)),
-              child: Card(
-                child: Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      gradient: LinearGradient(
-                          colors: [appPurpleLight1, appPurpleDark])),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Text(
-                          "${surah.name?.transliteration?.id}",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 18,
-                              color: appWhite),
-                        ),
-                        Text(
-                          "${surah.name?.translation?.id}",
-                          style: TextStyle(
-                              // fontWeight: FontWeight.w500,
-                              fontSize: 16,
-                              color: appWhite),
-                        ),
-                        const Divider(
-                          color: Colors.transparent,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "${surah.revelation?.id.toString().split(".").last.capitalizeFirst}",
-                              style: TextStyle(
-                                  // fontWeight: FontWeight.w500,
-                                  color: appWhite,
-                                  fontSize: 16),
-                            ),
-                            Container(
-                              width: 5,
-                              height: 5,
-                              margin: const EdgeInsets.symmetric(horizontal: 8),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: appWhite,
-                              ),
-                            ),
-                            Text(
-                              " ${surah.numberOfVerses} Ayat",
-                              style: TextStyle(
-                                  // fontWeight: FontWeight.w500,
-                                  fontSize: 16,
-                                  color: appWhite),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+              child: InformationDetailCard(
+                  "${surah.name?.transliteration?.id}",
+                  "${surah.name?.translation?.id}",
+                  "${surah.revelation?.id.toString().split(".").last.capitalizeFirst}",
+                  " ${surah.numberOfVerses} Ayat"
                   ),
-                ),
-              ),
             ),
             const SizedBox(
               height: 20,
@@ -178,7 +125,8 @@ class DetailSurahView extends GetView<DetailSurahController> {
                             spaceH10,
                             Text(
                               ayat.text.transliteration.en,
-                              style: const TextStyle(fontSize: 12, fontStyle: FontStyle.italic),
+                              style: const TextStyle(
+                                  fontSize: 12, fontStyle: FontStyle.italic),
                             ),
                             spaceH10,
                             Text(

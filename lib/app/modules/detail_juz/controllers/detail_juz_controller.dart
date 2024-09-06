@@ -6,6 +6,8 @@ import '../../../data/models/juz.dart';
 import 'package:http/http.dart' as http;
 
 class DetailJuzController extends GetxController {
+  final  startJuz = ''.obs;
+  final  endJuz = ''.obs;
 
    Future<Juz> getJuz(int juz) async {
     Uri url = Uri.parse('https://api.quran.gading.dev/juz/$juz');
@@ -15,6 +17,9 @@ class DetailJuzController extends GetxController {
       Map<String, dynamic> data =
           (jsonDecode(res.body) as Map<String, dynamic>)["data"];
       Juz juzData = Juz.fromJson(data);
+
+      startJuz.value = juzData.juzStartInfo!;
+      endJuz.value = juzData.juzEndInfo!;
 
       return juzData;
     } else {

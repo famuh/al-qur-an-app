@@ -2,17 +2,17 @@ import 'package:alquran_app/app/routes/app_pages.dart';
 import 'package:alquran_app/common/colors.dart';
 import 'package:alquran_app/common/space.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:get/get.dart';
+import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 
 import '../../../data/models/juz.dart' as juz;
 import '../../../data/models/surah.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
-
   const HomeView({Key? key}) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +27,7 @@ class HomeView extends GetView<HomeController> {
             IconButton(
                 onPressed: () => Get.toNamed(Routes.SEARCH),
                 icon: const Icon(Icons.search)),
-            IconButton(
-                onPressed: () {
-                  Get.changeThemeMode(
-                      Get.isDarkMode ? ThemeMode.light : ThemeMode.dark);
-                },
-                icon: const Icon(Icons.settings))
+            IconButton(onPressed: () => Get.toNamed(Routes.SETTINGS), icon: const Icon(Icons.settings))
           ],
         ),
         body: DefaultTabController(
@@ -214,7 +209,8 @@ class HomeView extends GetView<HomeController> {
                           // ),
                           onTap: () {
                             // belum diimplementasikan
-                            Get.toNamed(Routes.DETAIL_JUZ, arguments: index+1);
+                            Get.toNamed(Routes.DETAIL_JUZ,
+                                arguments: index + 1);
                             print("Ini juz ${index + 1}");
                           },
                         );
