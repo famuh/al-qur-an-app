@@ -1,6 +1,7 @@
 import 'package:alquran_app/app/routes/app_pages.dart';
 import 'package:alquran_app/common/colors.dart';
 import 'package:alquran_app/common/space.dart';
+import 'package:alquran_app/common/theme_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -16,9 +17,8 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    // if (Get.isDarkMode) {
-    //   controller.isDark.value = true;
-    // }
+    final ThemeService _themeService = Get.find<ThemeService>();
+
     return Scaffold(
         appBar: AppBar(
           title: const Text('Quran App'),
@@ -27,7 +27,11 @@ class HomeView extends GetView<HomeController> {
             IconButton(
                 onPressed: () => Get.toNamed(Routes.SEARCH),
                 icon: const Icon(Icons.search)),
-            IconButton(onPressed: () => Get.toNamed(Routes.SETTINGS), icon: const Icon(Icons.settings))
+            IconButton(
+                onPressed: () => Get.toNamed(Routes.SETTINGS),
+                icon: Obx(() => _themeService.isDarkMode
+                    ? const Icon(Icons.wb_sunny_outlined, color: Colors.yellow,)
+                    :  Icon(Icons.nights_stay, color: appPurple,)))
           ],
         ),
         body: DefaultTabController(
