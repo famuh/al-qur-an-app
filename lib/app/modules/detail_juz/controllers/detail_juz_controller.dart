@@ -9,6 +9,7 @@ class DetailJuzController extends GetxController {
   final  startJuz = ''.obs;
   final  endJuz = ''.obs;
   final totalVerses = ''.obs;
+  final anu = '';
 
    Future<Juz> getJuz(int juz) async {
     Uri url = Uri.parse('https://api.quran.gading.dev/juz/$juz');
@@ -22,6 +23,7 @@ class DetailJuzController extends GetxController {
       startJuz.value = juzData.juzStartInfo!;
       endJuz.value = juzData.juzEndInfo!;
       totalVerses.value = juzData.totalVerses.toString();
+
 
       return juzData;
     } else {

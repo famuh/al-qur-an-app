@@ -1,5 +1,6 @@
 import 'package:alquran_app/app/data/models/juz.dart' as juz;
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:get/get.dart';
 
@@ -52,16 +53,21 @@ class DetailJuzView extends GetView<DetailJuzController> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          Row(children: [
+                            Icon(Icons.lightbulb_outline_rounded, color: appOrange,),
+                            spaceW10,
+                             Text(
                             'Informasi mengenai Juz $juzNumber',
                             style:  TextStyle(
                               color: appOrange,
                                 fontSize: 16, fontWeight: FontWeight.bold),
                           ),
+                          ],),
+                         
                           spaceH10,
                           Text(
                             'Juz $juzNumber terdiri dari ${controller.totalVerses} Ayat \ndimulai dari QS. ${controller.startJuz}\nsampai QS. ${controller.endJuz}',
-                            style: const TextStyle(fontSize: 14),
+                            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
                           ),
                         ],
                       ),
