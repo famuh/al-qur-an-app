@@ -1,14 +1,15 @@
+import 'package:alquran_app/app/modules/settings/controllers/settings_controller.dart';
 import 'package:alquran_app/app/routes/app_pages.dart';
 import 'package:alquran_app/common/colors.dart';
-import 'package:alquran_app/common/theme_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-void main() async{
+void main() async {
   // Inisialisasi ThemeService menggunakan Get.put()
   await GetStorage.init();
-  Get.put(ThemeService());
+  // Get.put(ThemeService());
+  Get.put(SettingsController());
 
   runApp(MyApp());
 }
@@ -16,15 +17,22 @@ void main() async{
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Mengambil instance ThemeService yang diinisialisasi dengan Get.put()
-    final ThemeService _themeService = Get.find<ThemeService>();
+    // inisiasi local storage
     final box = GetStorage();
-print("membaca ${box.read('themeDark')} di main");
+
+    // Debugging untuk melihat nilai themeDark di GetStorage
+    print("membaca ${box.read('themeDark')} di main");
+
+      // Membaca nilai themeDark dari GetStorage dan menggunakan fallback value
+    final bool isDarkMode = box.read('themeDark') ?? false;
+
+
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: box.read('themeDark') == true ? themeDark : themeLight,
+      theme: isDarkMode ? themeDark : themeLight,
       darkTheme: themeDark,
-      themeMode: box.read('themeDark') == true ? ThemeMode.dark : ThemeMode.light,
+      
+      themeMode:isDarkMode ? ThemeMode.dark : ThemeMode.light,
       title: "application",
       initialRoute: Routes.HOME,
       getPages: AppPages.routes,

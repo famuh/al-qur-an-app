@@ -1,23 +1,30 @@
 import 'package:alquran_app/common/colors.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 class SettingsController extends GetxController {
+    final box = GetStorage();
 
 
-  
+  final _isDarkMode = false.obs; // Obx works with Rx types
 
-  // void changeThemeMode() async {
-  //   Get.isDarkMode ? Get.changeTheme(themeLight) : Get.changeTheme(themeDark);
+   get isDarkMode => _isDarkMode;
 
-  //   final box = GetStorage();
+@override
+  void onInit() {
+    _isDarkMode.value = box.read('themeDark') ?? false;
+    super.onInit();
+  }
 
-  //   if (Get.isDarkMode) {
-  //     _isDarkMode.value = false;
-  //     box.remove('themeDark');
-  //   } else {
-  //     _isDarkMode.value = true;
-  //     box.write('themeDark', true);
-  //   }
-  // }
+  void switchTheme() {
+    _isDarkMode.value = !_isDarkMode.value;
+    Get.changeTheme(_isDarkMode.value ? themeDark : themeLight);
+    Get.changeThemeMode(_isDarkMode.value ? ThemeMode.dark : ThemeMode.light);
+
+    final box = GetStorage();
+    box.write('themeDark', _isDarkMode.value);
+    print("mennulis ${_isDarkMode.value} ke lokal");
+  }
+ 
 }

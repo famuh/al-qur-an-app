@@ -1,15 +1,13 @@
 import 'package:alquran_app/app/routes/app_pages.dart';
 import 'package:alquran_app/common/colors.dart';
 import 'package:alquran_app/common/space.dart';
-import 'package:alquran_app/common/theme_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:get/get.dart';
-import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 
-import '../../../data/models/juz.dart' as juz;
 import '../../../data/models/surah.dart';
+import '../../settings/controllers/settings_controller.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -17,7 +15,6 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeService _themeService = Get.find<ThemeService>();
 
     return Scaffold(
         appBar: AppBar(
@@ -29,9 +26,20 @@ class HomeView extends GetView<HomeController> {
                 icon: const Icon(Icons.search)),
             IconButton(
                 onPressed: () => Get.toNamed(Routes.SETTINGS),
-                icon: Obx(() => _themeService.isDarkMode
-                    ? const Icon(Icons.wb_sunny_outlined, color: Colors.yellow,)
-                    :  Icon(Icons.nights_stay, color: appPurple,)))
+                icon: Obx(() {
+                  var _isDark = Get.find<SettingsController>().isDarkMode.value;
+
+                  if (_isDark) {
+                    return const Icon(
+                      Icons.wb_sunny_outlined,
+                      color: Colors.yellow,
+                    );
+                  }
+                  return Icon(
+                    Icons.nights_stay,
+                    color: appPurple,
+                  );
+                }))
           ],
         ),
         body: DefaultTabController(
