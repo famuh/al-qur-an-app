@@ -1,4 +1,6 @@
 import 'package:alquran_app/app/data/models/juz.dart' as juz;
+import 'package:alquran_app/common/list_surah.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -10,7 +12,9 @@ import '../controllers/detail_juz_controller.dart';
 
 class DetailJuzView extends GetView<DetailJuzController> {
   final int juzNumber = Get.arguments;
-   DetailJuzView({super.key});
+  DetailJuzView({super.key});
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +47,7 @@ class DetailJuzView extends GetView<DetailJuzController> {
                 return const SizedBox();
               }
 
-               if (index == 0) {
+              if (index == 0) {
                 return Padding(
                   padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 16.0),
                   child: Card(
@@ -53,21 +57,27 @@ class DetailJuzView extends GetView<DetailJuzController> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(children: [
-                            Icon(Icons.lightbulb_outline_rounded, color: appOrange,),
-                            spaceW10,
-                             Text(
-                            'Informasi mengenai Juz $juzNumber',
-                            style:  TextStyle(
-                              color: appOrange,
-                                fontSize: 16, fontWeight: FontWeight.bold),
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.lightbulb_outline_rounded,
+                                color: appOrange,
+                              ),
+                              spaceW10,
+                              Text(
+                                'Informasi mengenai Juz $juzNumber',
+                                style: TextStyle(
+                                    color: appOrange,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
                           ),
-                          ],),
-                         
                           spaceH10,
                           Text(
                             'Juz $juzNumber terdiri dari ${controller.totalVerses} Ayat \ndimulai dari QS. ${controller.startJuz}\nsampai QS. ${controller.endJuz}',
-                            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                            style: const TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.w500),
                           ),
                         ],
                       ),
@@ -83,8 +93,8 @@ class DetailJuzView extends GetView<DetailJuzController> {
 
               return Card(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 5, horizontal: 10),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
@@ -95,8 +105,7 @@ class DetailJuzView extends GetView<DetailJuzController> {
                           CircleAvatar(
                             backgroundImage: const AssetImage(
                                 'assets/images/avatar-border-list.png'),
-                            backgroundColor:
-                                appPurpleLight1.withOpacity(.1),
+                            backgroundColor: appPurpleLight1.withOpacity(.1),
                             radius: 16,
                             child: Text(
                               "${ayat?.number?.inSurah}",

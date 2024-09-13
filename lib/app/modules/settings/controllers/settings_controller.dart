@@ -1,23 +1,23 @@
+import 'package:alquran_app/common/colors.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class SettingsController extends GetxController {
-  //TODO: Implement SettingsController
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
+  
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
+  // void changeThemeMode() async {
+  //   Get.isDarkMode ? Get.changeTheme(themeLight) : Get.changeTheme(themeDark);
 
-  void increment() => count.value++;
+  //   final box = GetStorage();
+
+  //   if (Get.isDarkMode) {
+  //     _isDarkMode.value = false;
+  //     box.remove('themeDark');
+  //   } else {
+  //     _isDarkMode.value = true;
+  //     box.write('themeDark', true);
+  //   }
+  // }
 }

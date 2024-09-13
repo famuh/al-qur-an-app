@@ -12,6 +12,7 @@ dependencies:
   flutter: 
     sdk: flutter
   lite_rolling_switch: ^1.0.1
+  get_storage: ^2.1.1
 
 dev_dependencies: 
   flutter_lints: ^3.0.0
